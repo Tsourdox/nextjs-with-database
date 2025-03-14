@@ -1,4 +1,10 @@
+import { Metadata } from "next";
 import { createPost } from "../actions";
+
+export const metadata: Metadata = {
+  title: "Create Post | Instapost",
+  description: "Create your own post",
+};
 
 export default function NewPostPage() {
   return (
