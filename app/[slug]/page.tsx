@@ -1,6 +1,14 @@
 import { db } from "@/prisma/db";
 import DeletePostButton from "../ui/delete-post-button";
 
+export async function generateStaticParams() {
+  const posts = await db.post.findMany();
+
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
+
 interface Props {
   params: Promise<{ slug: string }>;
 }

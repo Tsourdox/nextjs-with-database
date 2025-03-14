@@ -11,7 +11,9 @@ export async function createPost(formData: FormData) {
 
   if (!title || !content || !author) throw new Error("400");
 
-  await db.post.create({ data: { title, content, author } });
+  await db.post.create({
+    data: { title, content, author, slug: encodeURI(title) },
+  });
   revalidatePath("/");
   redirect("/");
 }
